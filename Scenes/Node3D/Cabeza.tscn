@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://canxg8chco2ha"]
+
+[node name="Head" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+cull_mask = 523775

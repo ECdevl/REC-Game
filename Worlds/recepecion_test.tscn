@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://be5bgyovehso1"]
+
+[ext_resource type="PackedScene" uid="uid://b4qigixi24qcn" path="res://Scenes/CharacterBody3D/player.tscn" id="1_q4qcp"]
+[ext_resource type="PackedScene" uid="uid://cwm6iugbfbwut" path="res://Assets/models/Recepcion_beta.glb" id="3_fhuq3"]
+[ext_resource type="PackedScene" uid="uid://b12q5uyv8nw7d" path="res://Scenes/Generico/puerta.tscn" id="5_csw1d"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="player" parent="." instance=ExtResource("1_q4qcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1325, 2.91654, 17.3268)
+collision_layer = 128
+
+[node name="Door" parent="." instance=ExtResource("5_csw1d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.7694, 2.00014, 13.0032)
+
+[node name="Recepcion_beta" parent="." instance=ExtResource("3_fhuq3")]
+
+[node name="oco" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.5062, 5.95941, 14.4784)
+light_energy = 10.0
+spot_range = 10.0
+
+[node name="oco2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.4905, 5.95941, 19.987)
+light_energy = 10.0
+spot_range = 10.0
+
+[node name="oco3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 33.0581, 5.95941, 52.1123)
+light_energy = 10.0
+spot_range = 10.0

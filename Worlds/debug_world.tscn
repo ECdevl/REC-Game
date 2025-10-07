@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bah18gu7j6b2p"]
+
+[ext_resource type="PackedScene" uid="uid://b4qigixi24qcn" path="res://Scenes/CharacterBody3D/player.tscn" id="1_0daln"]
+[ext_resource type="PackedScene" uid="uid://ck60jmnqol3tk" path="res://Scenes/Generico/objeto.tscn" id="2_qu08q"]
+[ext_resource type="PackedScene" uid="uid://copdl62l2e4ig" path="res://Scenes/Objetos/llave_inglesa.tscn" id="3_rab8b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xamhg"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0daln"]
+data = PackedVector3Array(-25, 0.5, 25, 25, 0.5, 25, -25, -0.5, 25, 25, 0.5, 25, 25, -0.5, 25, -25, -0.5, 25, 25, 0.5, -25, -25, 0.5, -25, 25, -0.5, -25, -25, 0.5, -25, -25, -0.5, -25, 25, -0.5, -25, 25, 0.5, 25, 25, 0.5, -25, 25, -0.5, 25, 25, 0.5, -25, 25, -0.5, -25, 25, -0.5, 25, -25, 0.5, -25, -25, 0.5, 25, -25, -0.5, -25, -25, 0.5, 25, -25, -0.5, 25, -25, -0.5, -25, 25, 0.5, 25, -25, 0.5, 25, 25, 0.5, -25, -25, 0.5, 25, -25, 0.5, -25, 25, 0.5, -25, -25, -0.5, 25, 25, -0.5, 25, -25, -0.5, -25, 25, -0.5, 25, 25, -0.5, -25, -25, -0.5, -25)
+
+[node name="DebugWorld" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xamhg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0daln")
+
+[node name="player" parent="." instance=ExtResource("1_0daln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01966, 2.41274, 4.28548)
+
+[node name="objeto" parent="." instance=ExtResource("2_qu08q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0233, 0.999999, -13.5704)
+
+[node name="objeto2" parent="." instance=ExtResource("2_qu08q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.897114, 1, 7.89511)
+
+[node name="objeto3" parent="." instance=ExtResource("2_qu08q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1187, 0.999999, 10.8286)
+
+[node name="objeto4" parent="." instance=ExtResource("2_qu08q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2748, 0.999999, 0.322008)
+
+[node name="Llave Inglesa" parent="." instance=ExtResource("3_rab8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3212, 0.794244, -2.12195)
+
+[node name="Llave Inglesa2" parent="." instance=ExtResource("3_rab8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70363, 0.794244, 8.26273)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.45215, 15.9535, 10.5725)
+light_energy = 10.0
+spot_range = 30.0

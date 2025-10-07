@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://b3b42b4ice00c"]
+
+[sub_resource type="Gradient" id="Gradient_noarx"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a0tk4"]
+gradient = SubResource("Gradient_noarx")
+fill_from = Vector2(0.785714, 0)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r3fl7"]
+panorama = SubResource("GradientTexture2D_a0tk4")
+
+[sub_resource type="Sky" id="Sky_jka67"]
+sky_material = SubResource("PanoramaSkyMaterial_r3fl7")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_jka67")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 1

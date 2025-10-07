@@ -1,0 +1,464 @@
+[gd_scene load_steps=27 format=4 uid="uid://ddarleo4hddcx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo3wm"]
+resource_name = "Mesa de Luz"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_s2n4t"]
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.1875, 0.75, 0.3125, 0.0625),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAPQAAwD8AAEC+AACAPQAAmD8AAEC+AABQPwAAmD8AAEC+AABQPwAAwD8AAEC+AACAPQAAwD8AAAC+AABQPwAAmD8AAAC+AACAPQAAmD8AAAC+AABQPwAAwD8AAAC+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cimvx"]
+resource_name = "cube_6"
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.1875, 0.75, 0.3125, 0.0625),
+"attribute_data": PackedByteArray("AABIPgAA5D4AAEg+AAD4PgAA0D0AAPg+AADQPQAA5D4AAIQ+AACQPgAAhD4AAKQ+AACAPgAApD4AAIA+AACQPgAADD8AABA+AAAMPwAAOD4AAOg+AAA4PgAA6D4AABA+AACIPgAAkD4AAIg+AACkPgAAhD4AAKQ+AACEPgAAkD4AAPA+AADQPQAA8D4AAMA9AAAQPwAAwD0AABA/AADQPQAA9D4AAOQ+AAD0PgAA6D4AABI/AADoPgAAEj8AAOQ+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAPQAAwD8AAEC+AACAPQAAmD8AAEC+AABQPwAAmD8AAEC+AABQPwAAwD8AAEC+AABQPwAAwD8AAEC+AABQPwAAmD8AAEC+AABQPwAAmD8AAAC+AABQPwAAwD8AAAC+AABQPwAAwD8AAAC+AABQPwAAmD8AAAC+AACAPQAAmD8AAAC+AACAPQAAwD8AAAC+AACAPQAAwD8AAAC+AACAPQAAmD8AAAC+AACAPQAAmD8AAEC+AACAPQAAwD8AAEC+AABQPwAAwD8AAEC+AABQPwAAwD8AAAC+AACAPQAAwD8AAAC+AACAPQAAwD8AAEC+AABQPwAAmD8AAAC+AABQPwAAmD8AAEC+AACAPQAAmD8AAEC+AACAPQAAmD8AAAC+/////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_s2n4t")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pyy7o"]
+_surfaces = [{
+"aabb": AABB(0.75, 1.1875, -0.8125, 0.0625, 0.3125, 0.8125),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AABAPwAAwD8AAFC/AABAPwAAmD8AAFC/AABQPwAAmD8AAFC/AABQPwAAwD8AAFC/AABAPwAAwD8AAAAAAABQPwAAmD8AAAAAAABAPwAAmD8AAAAAAABQPwAAwD8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p76wg"]
+resource_name = "cube_7"
+_surfaces = [{
+"aabb": AABB(0.75, 1.1875, -0.8125, 0.0625, 0.3125, 0.8125),
+"attribute_data": PackedByteArray("AAD4PgAA9D4AAPg+AAAEPwAA9D4AAAQ/AAD0PgAA9D4AAFA+AADQPgAAUD4AAOQ+AADQPQAA5D4AANA9AADQPgAAADwAAPg+AAAAPAAABj8AAAAAAAAGPwAAAAAAAPg+AADQPQAA5D4AANA9AAD4PgAAAAAAAPg+AAAAAAAA5D4AAHA+AADEPgAAcD4AAJA+AAB4PgAAkD4AAHg+AADEPgAAeD4AAJA+AAB4PgAAxD4AAIA+AADEPgAAgD4AAJA+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AABAPwAAwD8AAFC/AABAPwAAmD8AAFC/AABQPwAAmD8AAFC/AABQPwAAwD8AAFC/AABQPwAAwD8AAFC/AABQPwAAmD8AAFC/AABQPwAAmD8AAAAAAABQPwAAwD8AAAAAAABQPwAAwD8AAAAAAABQPwAAmD8AAAAAAABAPwAAmD8AAAAAAABAPwAAwD8AAAAAAABAPwAAwD8AAAAAAABAPwAAmD8AAAAAAABAPwAAmD8AAFC/AABAPwAAwD8AAFC/AABQPwAAwD8AAFC/AABQPwAAwD8AAAAAAABAPwAAwD8AAAAAAABAPwAAwD8AAFC/AABQPwAAmD8AAAAAAABQPwAAmD8AAFC/AABAPwAAmD8AAFC/AABAPwAAmD8AAAAA/////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pyy7o")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sx4pm"]
+_surfaces = [{
+"aabb": AABB(0.75, 1.1875, -0.8125, 0.0625, 0.3125, 0.8125),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AABAPwAAwD8AAFC/AABAPwAAmD8AAFC/AABQPwAAmD8AAFC/AABQPwAAwD8AAFC/AABAPwAAwD8AAAAAAABQPwAAmD8AAAAAAABAPwAAmD8AAAAAAABQPwAAwD8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cijbq"]
+resource_name = "cube_8"
+_surfaces = [{
+"aabb": AABB(0.75, 1.1875, -0.8125, 0.0625, 0.3125, 0.8125),
+"attribute_data": PackedByteArray("AACEPgAApD4AAIQ+AAC4PgAAgD4AALg+AACAPgAApD4AAPw+AADQPQAA/D4AABA+AADIPgAAED4AAMg+AADQPQAAiD4AAKQ+AACIPgAAuD4AAIQ+AAC4PgAAhD4AAKQ+AADQPQAA0D4AANA9AADkPgAAAAAAAOQ+AAAAAAAA0D4AAGA+AADEPgAAYD4AAJA+AABoPgAAkD4AAGg+AADEPgAAaD4AAJA+AABoPgAAxD4AAHA+AADEPgAAcD4AAJA+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AABAPwAAwD8AAFC/AABAPwAAmD8AAFC/AABQPwAAmD8AAFC/AABQPwAAwD8AAFC/AABQPwAAwD8AAFC/AABQPwAAmD8AAFC/AABQPwAAmD8AAAAAAABQPwAAwD8AAAAAAABQPwAAwD8AAAAAAABQPwAAmD8AAAAAAABAPwAAmD8AAAAAAABAPwAAwD8AAAAAAABAPwAAwD8AAAAAAABAPwAAmD8AAAAAAABAPwAAmD8AAFC/AABAPwAAwD8AAFC/AABQPwAAwD8AAFC/AABQPwAAwD8AAAAAAABAPwAAwD8AAAAAAABAPwAAwD8AAFC/AABQPwAAmD8AAAAAAABQPwAAmD8AAFC/AABAPwAAmD8AAFC/AABAPwAAmD8AAAAA/////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sx4pm")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yed7c"]
+_surfaces = [{
+"aabb": AABB(0.8125, 1.1875, -0.8125, 0.625, 0.0625, 0.8125),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AABQPwAAoD8AAFC/AABQPwAAmD8AAFC/AAC4PwAAmD8AAFC/AAC4PwAAoD8AAFC/AABQPwAAoD8AAAAAAAC4PwAAmD8AAAAAAABQPwAAmD8AAAAAAAC4PwAAoD8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3n6mf"]
+resource_name = "cube_9"
+_surfaces = [{
+"aabb": AABB(0.8125, 1.1875, -0.8125, 0.625, 0.0625, 0.8125),
+"attribute_data": PackedByteArray("AABQPgAAzD4AAFA+AADQPgAAAD4AANA+AAAAPgAAzD4AABI/AAAAPQAAEj8AACA9AADwPgAAID0AAPA+AAAAPQAADj8AAPA+AAAOPwAA9D4AAPQ+AAD0PgAA9D4AAPA+AAASPwAAID0AABI/AABAPQAA8D4AAEA9AADwPgAAID0AAMg+AADQPQAAyD4AAAAAAADwPgAAAAAAAPA+AADQPQAAYD4AAMg+AABgPgAA/D4AAJg+AAD8PgAAmD4AAMg+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AABQPwAAoD8AAFC/AABQPwAAmD8AAFC/AAC4PwAAmD8AAFC/AAC4PwAAoD8AAFC/AAC4PwAAoD8AAFC/AAC4PwAAmD8AAFC/AAC4PwAAmD8AAAAAAAC4PwAAoD8AAAAAAAC4PwAAoD8AAAAAAAC4PwAAmD8AAAAAAABQPwAAmD8AAAAAAABQPwAAoD8AAAAAAABQPwAAoD8AAAAAAABQPwAAmD8AAAAAAABQPwAAmD8AAFC/AABQPwAAoD8AAFC/AAC4PwAAoD8AAFC/AAC4PwAAoD8AAAAAAABQPwAAoD8AAAAAAABQPwAAoD8AAFC/AAC4PwAAmD8AAAAAAAC4PwAAmD8AAFC/AABQPwAAmD8AAFC/AABQPwAAmD8AAAAA/////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yed7c")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cxnn4"]
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.1875, 0.75, 0.3125, 0.0625),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAPQAAwD8AAEC+AACAPQAAmD8AAEC+AABQPwAAmD8AAEC+AABQPwAAwD8AAEC+AACAPQAAwD8AAAC+AABQPwAAmD8AAAC+AACAPQAAmD8AAAC+AABQPwAAwD8AAAC+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8u5lo"]
+resource_name = "cube_10"
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.1875, 0.75, 0.3125, 0.0625),
+"attribute_data": PackedByteArray("AAAMPwAAOD4AAAw/AABgPgAA6D4AAGA+AADoPgAAOD4AAIA8AAD4PgAAgDwAAAY/AAAAPAAABj8AAAA8AAD4PgAADD8AAGA+AAAMPwAAhD4AAOg+AACEPgAA6D4AAGA+AADAPAAA+D4AAMA8AAAGPwAAgDwAAAY/AACAPAAA+D4AAPQ+AADsPgAA9D4AAOg+AAASPwAA6D4AABI/AADsPgAA9D4AAOw+AAD0PgAA8D4AABI/AADwPgAAEj8AAOw+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAPQAAwD8AAEC+AACAPQAAmD8AAEC+AABQPwAAmD8AAEC+AABQPwAAwD8AAEC+AABQPwAAwD8AAEC+AABQPwAAmD8AAEC+AABQPwAAmD8AAAC+AABQPwAAwD8AAAC+AABQPwAAwD8AAAC+AABQPwAAmD8AAAC+AACAPQAAmD8AAAC+AACAPQAAwD8AAAC+AACAPQAAwD8AAAC+AACAPQAAmD8AAAC+AACAPQAAmD8AAEC+AACAPQAAwD8AAEC+AABQPwAAwD8AAEC+AABQPwAAwD8AAAC+AACAPQAAwD8AAAC+AACAPQAAwD8AAEC+AABQPwAAmD8AAAC+AABQPwAAmD8AAEC+AACAPQAAmD8AAEC+AACAPQAAmD8AAAC+/////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cxnn4")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y6bnw"]
+_surfaces = [{
+"aabb": AABB(0.34375, 1.3125, -0.25, 0.1875, 0.0625, 0.0625),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACwPgAAsD8AAIC+AACwPgAAqD8AAIC+AAAIPwAAqD8AAIC+AAAIPwAAsD8AAIC+AACwPgAAsD8AAEC+AAAIPwAAqD8AAEC+AACwPgAAqD8AAEC+AAAIPwAAsD8AAEC+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eojig"]
+resource_name = "cube_11"
+_surfaces = [{
+"aabb": AABB(0.34375, 1.3125, -0.25, 0.1875, 0.0625, 0.0625),
+"attribute_data": PackedByteArray("AAB4PgAAxD4AAHg+AADIPgAAYD4AAMg+AABgPgAAxD4AAAg+AACIPgAACD4AAIw+AAAAPgAAjD4AAAA+AACIPgAAiD4AAMQ+AACIPgAAyD4AAHg+AADIPgAAeD4AAMQ+AAAQPgAAiD4AABA+AACMPgAACD4AAIw+AAAIPgAAiD4AAMA8AAD8PgAAwDwAAPg+AABAPQAA+D4AAEA9AAD8PgAAQD0AAPg+AABAPQAA/D4AAJA9AAD8PgAAkD0AAPg+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACwPgAAsD8AAIC+AACwPgAAqD8AAIC+AAAIPwAAqD8AAIC+AAAIPwAAsD8AAIC+AAAIPwAAsD8AAIC+AAAIPwAAqD8AAIC+AAAIPwAAqD8AAEC+AAAIPwAAsD8AAEC+AAAIPwAAsD8AAEC+AAAIPwAAqD8AAEC+AACwPgAAqD8AAEC+AACwPgAAsD8AAEC+AACwPgAAsD8AAEC+AACwPgAAqD8AAEC+AACwPgAAqD8AAIC+AACwPgAAsD8AAIC+AAAIPwAAsD8AAIC+AAAIPwAAsD8AAEC+AACwPgAAsD8AAEC+AACwPgAAsD8AAIC+AAAIPwAAqD8AAEC+AAAIPwAAqD8AAIC+AACwPgAAqD8AAIC+AACwPgAAqD8AAEC+/////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y6bnw")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_em4p0"]
+_surfaces = [{
+"aabb": AABB(-0.0625, 0, -0.0625, 0.125, 1.125, 1),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAvQAAkD8AAIC9AACAvQAAAAAAAIC9AACAPQAAAAAAAIC9AACAPQAAkD8AAIC9AACAvQAAkD8AAHA/AACAPQAAAAAAAHA/AACAvQAAAAAAAHA/AACAPQAAkD8AAHA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ofm8d"]
+resource_name = "cube"
+_surfaces = [{
+"aabb": AABB(-0.0625, 0, -0.0625, 0.125, 1.125, 1),
+"attribute_data": PackedByteArray("AACgPgAAyD4AAKA+AAAIPwAAmD4AAAg/AACYPgAAyD4AAIg+AAAAAAAAiD4AABA+AAAQPgAAED4AABA+AAAAAAAAqD4AAMg+AACoPgAACD8AAKA+AAAIPwAAoD4AAMg+AACIPgAAED4AAIg+AACQPgAAED4AAJA+AAAQPgAAED4AAFA+AAAGPwAAUD4AAMw+AABgPgAAzD4AAGA+AAAGPwAA6D4AAKQ+AADoPgAA5D4AAPA+AADkPgAA8D4AAKQ+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAvQAAkD8AAIC9AACAvQAAAAAAAIC9AACAPQAAAAAAAIC9AACAPQAAkD8AAIC9AACAPQAAkD8AAIC9AACAPQAAAAAAAIC9AACAPQAAAAAAAHA/AACAPQAAkD8AAHA/AACAPQAAkD8AAHA/AACAPQAAAAAAAHA/AACAvQAAAAAAAHA/AACAvQAAkD8AAHA/AACAvQAAkD8AAHA/AACAvQAAAAAAAHA/AACAvQAAAAAAAIC9AACAvQAAkD8AAIC9AACAPQAAkD8AAIC9AACAPQAAkD8AAHA/AACAvQAAkD8AAHA/AACAvQAAkD8AAIC9AACAPQAAAAAAAHA/AACAPQAAAAAAAIC9AACAvQAAAAAAAIC9AACAvQAAAAAAAHA//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_em4p0")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vueoe"]
+_surfaces = [{
+"aabb": AABB(-0.0625, 0, -0.0625, 0.125, 1.125, 1),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAvQAAkD8AAIC9AACAvQAAAAAAAIC9AACAPQAAAAAAAIC9AACAPQAAkD8AAIC9AACAvQAAkD8AAHA/AACAPQAAAAAAAHA/AACAvQAAAAAAAHA/AACAPQAAkD8AAHA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_15r2f"]
+resource_name = "cube_1"
+_surfaces = [{
+"aabb": AABB(-0.0625, 0, -0.0625, 0.125, 1.125, 1),
+"attribute_data": PackedByteArray("AACwPgAAyD4AALA+AAAIPwAAqD4AAAg/AACoPgAAyD4AAAA+AACIPgAAAD4AANA+AAAAAAAA0D4AAAAAAACIPgAAuD4AAMg+AAC4PgAACD8AALA+AAAIPwAAsD4AAMg+AADIPgAAAAAAAMg+AAAQPgAAiD4AABA+AACIPgAAAAAAAOg+AAASPwAA6D4AAOQ+AADwPgAA5D4AAPA+AAASPwAA8D4AAKQ+AADwPgAA5D4AAPg+AADkPgAA+D4AAKQ+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAvQAAkD8AAIC9AACAvQAAAAAAAIC9AACAPQAAAAAAAIC9AACAPQAAkD8AAIC9AACAPQAAkD8AAIC9AACAPQAAAAAAAIC9AACAPQAAAAAAAHA/AACAPQAAkD8AAHA/AACAPQAAkD8AAHA/AACAPQAAAAAAAHA/AACAvQAAAAAAAHA/AACAvQAAkD8AAHA/AACAvQAAkD8AAHA/AACAvQAAAAAAAHA/AACAvQAAAAAAAIC9AACAvQAAkD8AAIC9AACAPQAAkD8AAIC9AACAPQAAkD8AAHA/AACAvQAAkD8AAHA/AACAvQAAkD8AAIC9AACAPQAAAAAAAHA/AACAPQAAAAAAAIC9AACAvQAAAAAAAIC9AACAvQAAAAAAAHA//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vueoe")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fhyrw"]
+_surfaces = [{
+"aabb": AABB(-0.125, 1.125, -0.125, 1.125, 0.125, 1.0625),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAvgAAoD8AAAC+AAAAvgAAkD8AAAC+AACAPwAAkD8AAAC+AACAPwAAoD8AAAC+AAAAvgAAoD8AAHA/AACAPwAAkD8AAHA/AAAAvgAAkD8AAHA/AACAPwAAoD8AAHA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bwioc"]
+resource_name = "cube_2"
+_surfaces = [{
+"aabb": AABB(-0.125, 1.125, -0.125, 1.125, 0.125, 1.0625),
+"attribute_data": PackedByteArray("AAAYPwAAhD4AABg/AACMPgAA6D4AAIw+AADoPgAAhD4AABY/AACUPgAAFj8AAJw+AADoPgAAnD4AAOg+AACUPgAAGD8AAIw+AAAYPwAAlD4AAOg+AACUPgAA6D4AAIw+AAAWPwAAnD4AABY/AACkPgAA6D4AAKQ+AADoPgAAnD4AAAAAAAAIPgAAAAAAAAAAAAAQPgAAAAAAABA+AAAIPgAAAAAAAAg+AAAAAAAAiD4AABA+AACIPgAAED4AAAg+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAvgAAoD8AAAC+AAAAvgAAkD8AAAC+AACAPwAAkD8AAAC+AACAPwAAoD8AAAC+AACAPwAAoD8AAAC+AACAPwAAkD8AAAC+AACAPwAAkD8AAHA/AACAPwAAoD8AAHA/AACAPwAAoD8AAHA/AACAPwAAkD8AAHA/AAAAvgAAkD8AAHA/AAAAvgAAoD8AAHA/AAAAvgAAoD8AAHA/AAAAvgAAkD8AAHA/AAAAvgAAkD8AAAC+AAAAvgAAoD8AAAC+AACAPwAAoD8AAAC+AACAPwAAoD8AAHA/AAAAvgAAoD8AAHA/AAAAvgAAoD8AAAC+AACAPwAAkD8AAHA/AACAPwAAkD8AAAC+AAAAvgAAkD8AAAC+AAAAvgAAkD8AAHA//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fhyrw")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yxba6"]
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.0625, 0.75, 0.0625, 1),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAPQAAoD8AAIC9AACAPQAAmD8AAIC9AABQPwAAmD8AAIC9AABQPwAAoD8AAIC9AACAPQAAoD8AAHA/AABQPwAAmD8AAHA/AACAPQAAmD8AAHA/AABQPwAAoD8AAHA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y11db"]
+resource_name = "cube_3"
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.0625, 0.75, 0.0625, 1),
+"attribute_data": PackedByteArray("AAAQPwAAoD0AABA/AACwPQAA8D4AALA9AADwPgAAoD0AABg/AAAAAAAAGD8AAAA8AADwPgAAADwAAPA+AAAAAAAAED8AALA9AAAQPwAAwD0AAPA+AADAPQAA8D4AALA9AAAYPwAAADwAABg/AACAPAAA8D4AAIA8AADwPgAAADwAAIg+AACIPgAAiD4AABA+AAC4PgAAED4AALg+AACIPgAAiD4AAIg+AACIPgAAyD4AALg+AADIPgAAuD4AAIg+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAPQAAoD8AAIC9AACAPQAAmD8AAIC9AABQPwAAmD8AAIC9AABQPwAAoD8AAIC9AABQPwAAoD8AAIC9AABQPwAAmD8AAIC9AABQPwAAmD8AAHA/AABQPwAAoD8AAHA/AABQPwAAoD8AAHA/AABQPwAAmD8AAHA/AACAPQAAmD8AAHA/AACAPQAAoD8AAHA/AACAPQAAoD8AAHA/AACAPQAAmD8AAHA/AACAPQAAmD8AAIC9AACAPQAAoD8AAIC9AABQPwAAoD8AAIC9AABQPwAAoD8AAHA/AACAPQAAoD8AAHA/AACAPQAAoD8AAIC9AABQPwAAmD8AAHA/AABQPwAAmD8AAIC9AACAPQAAmD8AAIC9AACAPQAAmD8AAHA//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yxba6")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jcexk"]
+_surfaces = [{
+"aabb": AABB(-0.8125, 0.1875, 0.875, 0.75, 0.9375, 0.0625),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AABQvwAAkD8AAGA/AABQvwAAQD4AAGA/AACAvQAAQD4AAGA/AACAvQAAkD8AAGA/AABQvwAAkD8AAHA/AACAvQAAQD4AAHA/AABQvwAAQD4AAHA/AACAvQAAkD8AAHA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_es6bx"]
+resource_name = "cube_4"
+_surfaces = [{
+"aabb": AABB(-0.8125, 0.1875, 0.875, 0.75, 0.9375, 0.0625),
+"attribute_data": PackedByteArray("AABgPgAAkD4AAGA+AADMPgAAAD4AAMw+AAAAPgAAkD4AAFA+AADkPgAAUD4AABA/AABIPgAAED8AAEg+AADkPgAA6D4AABA+AADoPgAAhD4AALg+AACEPgAAuD4AABA+AAD0PgAA5D4AAPQ+AAAQPwAA8D4AABA/AADwPgAA5D4AAPA+AABgPQAA8D4AAEA9AAAQPwAAQD0AABA/AABgPQAA8D4AAGA9AADwPgAAgD0AABA/AACAPQAAED8AAGA9"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AABQvwAAkD8AAGA/AABQvwAAQD4AAGA/AACAvQAAQD4AAGA/AACAvQAAkD8AAGA/AACAvQAAkD8AAGA/AACAvQAAQD4AAGA/AACAvQAAQD4AAHA/AACAvQAAkD8AAHA/AACAvQAAkD8AAHA/AACAvQAAQD4AAHA/AABQvwAAQD4AAHA/AABQvwAAkD8AAHA/AABQvwAAkD8AAHA/AABQvwAAQD4AAHA/AABQvwAAQD4AAGA/AABQvwAAkD8AAGA/AACAvQAAkD8AAGA/AACAvQAAkD8AAHA/AABQvwAAkD8AAHA/AABQvwAAkD8AAGA/AACAvQAAQD4AAHA/AACAvQAAQD4AAGA/AABQvwAAQD4AAGA/AABQvwAAQD4AAHA//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jcexk")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j0gf0"]
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.0625, 0.75, 0.0625, 0.9375),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYA"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAPQAAoD8AAIC9AACAPQAAmD8AAIC9AABQPwAAmD8AAIC9AABQPwAAoD8AAIC9AACAPQAAoD8AAGA/AABQPwAAmD8AAGA/AACAPQAAmD8AAGA/AABQPwAAoD8AAGA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j1gj3"]
+resource_name = "cube_5"
+_surfaces = [{
+"aabb": AABB(0.0625, 1.1875, -0.0625, 0.75, 0.0625, 0.9375),
+"attribute_data": PackedByteArray("AAAQPwAAgD0AABA/AACQPQAA8D4AAJA9AADwPgAAgD0AABY/AACAPAAAFj8AAMA8AADwPgAAwDwAAPA+AACAPAAAED8AAJA9AAAQPwAAoD0AAPA+AACgPQAA8D4AAJA9AAAWPwAAwDwAABY/AAAAPQAA8D4AAAA9AADwPgAAwDwAALg+AADAPgAAuD4AAIQ+AADoPgAAhD4AAOg+AADAPgAAuD4AAMA+AAC4PgAA/D4AAOg+AAD8PgAA6D4AAMA+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_jo3wm"),
+"name": "Mesa de Luz",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAPQAAoD8AAIC9AACAPQAAmD8AAIC9AABQPwAAmD8AAIC9AABQPwAAoD8AAIC9AABQPwAAoD8AAIC9AABQPwAAmD8AAIC9AABQPwAAmD8AAGA/AABQPwAAoD8AAGA/AABQPwAAoD8AAGA/AABQPwAAmD8AAGA/AACAPQAAmD8AAGA/AACAPQAAoD8AAGA/AACAPQAAoD8AAGA/AACAPQAAmD8AAGA/AACAPQAAmD8AAIC9AACAPQAAoD8AAIC9AABQPwAAoD8AAIC9AABQPwAAoD8AAGA/AACAPQAAoD8AAGA/AACAPQAAoD8AAIC9AABQPwAAmD8AAGA/AABQPwAAmD8AAIC9AACAPQAAmD8AAIC9AACAPQAAmD8AAGA//////wAA/7//////AAD/v/////8AAP+//////wAA/7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_j0gf0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7pwp7"]
+size = Vector3(1.02258, 1.24231, 0.976318)
+
+[node name="Mesa de Luz" type="StaticBody3D"]
+
+[node name="Cajon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8125)
+
+[node name="cube_6" type="MeshInstance3D" parent="Cajon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -0.375, -0.25)
+mesh = SubResource("ArrayMesh_cimvx")
+skeleton = NodePath("")
+
+[node name="cube_7" type="MeshInstance3D" parent="Cajon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -0.375, -0.4375)
+mesh = SubResource("ArrayMesh_p76wg")
+skeleton = NodePath("")
+
+[node name="cube_8" type="MeshInstance3D" parent="Cajon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -0.375, -0.4375)
+mesh = SubResource("ArrayMesh_cijbq")
+skeleton = NodePath("")
+
+[node name="cube_9" type="MeshInstance3D" parent="Cajon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -0.375, -0.4375)
+mesh = SubResource("ArrayMesh_3n6mf")
+skeleton = NodePath("")
+
+[node name="cube_10" type="MeshInstance3D" parent="Cajon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -0.375, -1.125)
+mesh = SubResource("ArrayMesh_8u5lo")
+skeleton = NodePath("")
+
+[node name="cube_11" type="MeshInstance3D" parent="Cajon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -0.375, -1.125)
+mesh = SubResource("ArrayMesh_eojig")
+skeleton = NodePath("")
+
+[node name="cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4375, 0, -0.4375)
+mesh = SubResource("ArrayMesh_ofm8d")
+skeleton = NodePath("")
+
+[node name="cube_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 0, -0.4375)
+mesh = SubResource("ArrayMesh_15r2f")
+skeleton = NodePath("")
+
+[node name="cube_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 0, -0.4375)
+mesh = SubResource("ArrayMesh_bwioc")
+skeleton = NodePath("")
+
+[node name="cube_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -1.0625, -0.4375)
+mesh = SubResource("ArrayMesh_y11db")
+skeleton = NodePath("")
+
+[node name="cube_4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4375, 0, -0.4375)
+mesh = SubResource("ArrayMesh_es6bx")
+skeleton = NodePath("")
+
+[node name="cube_5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -0.4375, -0.4375)
+mesh = SubResource("ArrayMesh_j1gj3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117798, 0.610626, 0.0118408)
+shape = SubResource("BoxShape3D_7pwp7")
+debug_color = Color(1, 0, 0.0588235, 1)

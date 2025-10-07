@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck60jmnqol3tk"]
+
+[ext_resource type="Script" uid="uid://cpa48sftqkwlo" path="res://Scripts/Objects/objeto_generico.gd" id="1_wm8r3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wm8r3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm8r3"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hew6i"]
+
+[node name="objeto" type="RigidBody3D" groups=["grab"]]
+script = ExtResource("1_wm8r3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_wm8r3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wm8r3")
+mesh = SubResource("SphereMesh_hew6i")

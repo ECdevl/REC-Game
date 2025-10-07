@@ -1,0 +1,145 @@
+[gd_scene load_steps=12 format=4 uid="uid://b12q5uyv8nw7d"]
+
+[ext_resource type="Script" uid="uid://c4da3hvj5pcj" path="res://Scripts/Objects/puerta.gd" id="1_ij164"]
+[ext_resource type="Texture2D" uid="uid://2sxk0rg5cwdj" path="res://Assets/models/puerta_wood_table_worn_diff_1k.jpg" id="1_uy71j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ge2me"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_uy71j")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dlu2s"]
+_surfaces = [{
+"aabb": AABB(-1, -0.2, -2.0153, 2, 0.2, 4.03061),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAAEAAEAAgAFAAMAAgABAAUAAAADAAYABAAAAAYABgADAAUAAQAHAAQABAAGAAcAAQAFAAcABgAFAAcA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAv6qcPrO6+gBAAACAP6qcPjO6+gDAAACAP6qcPrO6+gBAAACAP9DMTL66+gBAAACAv6qcPjO6+gDAAACAP8rMTL66+gDAAACAv9DMTL66+gBAAACAv8rMTL66+gDA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xppuu"]
+resource_name = "puerta_Plano"
+_surfaces = [{
+"aabb": AABB(-1, -0.2, -2.0153, 2, 0.2, 4.03061),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAgD8AAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_ge2me"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAv6qcPrO6+gBAAACAP6qcPjO6+gDAAACAP6qcPrO6+gBAAACAv6qcPjO6+gDAAACAv9DMTL66+gBAAACAP8rMTL66+gDAAACAv8rMTL66+gDAAACAP9DMTL66+gBAAACAP6qcPrO6+gBAAACAP8rMTL66+gDAAACAP9DMTL66+gBAAACAP6qcPjO6+gDAAACAv6qcPjO6+gDAAACAv9DMTL66+gBAAACAv8rMTL66+gDAAACAv6qcPrO6+gBAAACAP6qcPjO6+gDAAACAv8rMTL66+gDAAACAv6qcPjO6+gDAAACAP8rMTL66+gDAAACAv6qcPrO6+gBAAACAP9DMTL66+gBAAACAv9DMTL66+gBAAACAP6qcPrO6+gBA/3///////7//f///////v/9///////+//3///////7//fwAA////P/9/AAD///8//38AAP///z//fwAA////P////3////+/////f////7////9/////v////3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dlu2s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_768ng"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_t07me"]
+_surfaces = [{
+"aabb": AABB(-1, -0.325387, -1, 2, 0.325387, 2),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAAEAAEAAgAFAAMAAgABAAUAAAADAAYABAAAAAYABgADAAUAAQAEAAcABAAGAAcAAQAHAAUABgAFAAcA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AACAPyiZpr4AAIA/AACAvwAAAAAAAIC/AACAPyiZpr4AAIC/AACAvyiZpr4AAIA/AACAvyiZpr4AAIC/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_206xd"]
+resource_name = "puerta_Plano_001"
+_surfaces = [{
+"aabb": AABB(-1, -0.325387, -1, 2, 0.325387, 2),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAgD8AAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_768ng"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC/AACAvyiZpr4AAIA/AACAPyiZpr4AAIC/AACAvyiZpr4AAIC/AACAPyiZpr4AAIA/AACAPwAAAAAAAIA/AACAPyiZpr4AAIC/AACAPyiZpr4AAIA/AACAPwAAAAAAAIC/AACAvwAAAAAAAIC/AACAvyiZpr4AAIA/AACAvyiZpr4AAIC/AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAvyiZpr4AAIC/AACAPyiZpr4AAIC/AACAvwAAAAAAAIC/AACAvwAAAAAAAIA/AACAPyiZpr4AAIA/AACAvyiZpr4AAIA/AACAPwAAAAAAAIA//3///////7//f///////v/9///////+//3///////7//fwAA////P/9/AAD///8//38AAP///z//fwAA////P////3////+/////f////7////9/////v////3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//////////v/////////+//////////7//////////v/9//3////8//3//f////z//f/9/////P/9//3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_t07me")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yc1d4"]
+size = Vector3(1.89075, 4.00169, 0.205078)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy71j"]
+size = Vector3(0.177612, 4, 0.249023)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yc1d4"]
+size = Vector3(0.25, 4, 0.25)
+
+[node name="Door" type="Node3D"]
+
+[node name="Puerta" type="RigidBody3D" parent="." groups=["interact"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+collision_layer = 9
+collision_mask = 140
+can_sleep = false
+angular_damp = 1.0
+script = ExtResource("1_ij164")
+
+[node name="puerta" type="Node3D" parent="Puerta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Plano" type="MeshInstance3D" parent="Puerta/puerta"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 2, 0)
+mesh = SubResource("ArrayMesh_xppuu")
+skeleton = NodePath("")
+
+[node name="Picaporte" type="MeshInstance3D" parent="Puerta/puerta"]
+transform = Transform3D(0.1, 0, 0, 0, 0, -0.1, 0, 0.1, 0, -0.8, 2, 0)
+mesh = SubResource("ArrayMesh_206xd")
+skeleton = NodePath("")
+
+[node name="Picaporte_001" type="MeshInstance3D" parent="Puerta/puerta"]
+transform = Transform3D(0.1, 0, 0, 0, 0, -0.1, 0, 0.1, 0, -0.8, 1.99367, 0.234152)
+mesh = SubResource("ArrayMesh_206xd")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puerta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0443726, -0.0199203, 0.0957031)
+shape = SubResource("BoxShape3D_yc1d4")
+
+[node name="Timer" type="Timer" parent="Puerta"]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="marco" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="marco"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878296, 0.0185547, 0.0991211)
+shape = SubResource("BoxShape3D_uy71j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="marco"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601196, 0, 0)
+mesh = SubResource("BoxMesh_yc1d4")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+node_a = NodePath("../Puerta")
+node_b = NodePath("../marco")
+angular_limit/enable = true
+
+[connection signal="timeout" from="Puerta/Timer" to="Puerta" method="_on_timer_timeout"]
