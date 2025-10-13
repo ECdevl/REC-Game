@@ -921,7 +921,7 @@ _data = {
 size = Vector3(1, 1.91687, 0.444336)
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_pmbg2"]
-length = 0.75
+length = 0.8
 
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("LookComponent") groups=["player"]]
 collision_mask = 3

@@ -4,14 +4,6 @@ extends CharacterBody3D
 var addedHead = false
 signal toggle_run(run:bool)
 
-func _enter_tree():
-
-	if find_child("Head"):
-		addedHead = true
-	else:
-		push_error("no se encontro el nodo para la cabeza, se te olvido agregarlo?")
-		print("Recuerda que el nodo 'Head' debe contener un Camera3D como hijo")
-	
 @export var LookComponent : LookingatComponent
 
 ## PLAYER MOVMENT SCRIPT ##
@@ -55,9 +47,9 @@ var tween : Tween
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 # To keep track of current speed and acceleration
-var current_speed = SPEED
-var speed = current_speed
-var accel = ACCEL
+var current_speed := SPEED
+var speed := current_speed
+var accel := ACCEL
 
 # Used when lerping rotation to reduce stuttering when moving the mouse
 var rotation_target_player : float
@@ -219,7 +211,7 @@ func move_player(delta):
 
 	move_and_slide()
 
-var holding = null
+var holding : RigidBody3D = null 
 func _interact() -> void:
 	# Usar get_node() con la constante para obtener el nodo de forma segura.
 	if LookComponent.looking_at and LookComponent.looking_at.is_in_group("grab"):
@@ -233,9 +225,7 @@ func _interact() -> void:
 			else:
 				holding = LookComponent.looking_at as RigidBody3D # Aseguramos el tipo
 				Global.store_item(holding) # Guardar el objeto en el inventario
-			
-			if current_slot < 3:
-				current_slot += 1
+
 			return
 	elif LookComponent.looking_at and LookComponent.looking_at.is_in_group("interact"):
 		LookComponent.looking_at.interac()
@@ -297,6 +287,7 @@ func holding_logic() -> void:
 	holding.global_transform = target_transform * held_object_transform
 	holding.set_collision_layer_value(1, false)
 	holding.set_collision_mask_value(1, false)
+	holding.remove_from_group("grab")
 
 func _throw_object() -> void:
 	if holding:
@@ -310,6 +301,7 @@ func _throw_object() -> void:
 			# Restaurar capas de colisión y máscara después del lanzamiento.
 			holding.set_collision_layer_value(1, true)
 			holding.set_collision_mask_value(1, true)
+			holding.add_to_group("grab")
 
 		_clear_inventory_slot(current_slot)
 		holding = null
@@ -321,7 +313,7 @@ func _drop_object() -> void:
 			# Es crucial asegurarse de que las capas que restauras sean las correctas para el objeto.
 			holding.set_collision_layer_value(1, true)
 			holding.set_collision_mask_value(1, true)
-		
+			holding.add_to_group("grab")
 		# Eliminar la referencia del slot del inventario.
 		# Considera una función en Global para manejar esto de manera más abstracta.
 		_clear_inventory_slot(current_slot)

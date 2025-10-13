@@ -35,11 +35,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1187, 0.999999, 10.8286)
 [node name="objeto4" parent="." instance=ExtResource("2_qu08q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2748, 0.999999, 0.322008)
 
-[node name="Llave Inglesa" parent="." instance=ExtResource("3_rab8b")]
+[node name="Llave Inglesa" parent="." groups=["grab"] instance=ExtResource("3_rab8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3212, 0.794244, -2.12195)
+held_rotation = Vector3(90, 0, -90)
 
 [node name="Llave Inglesa2" parent="." instance=ExtResource("3_rab8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70363, 0.794244, 8.26273)
+held_rotation = Vector3(90, 0, -90)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.45215, 15.9535, 10.5725)

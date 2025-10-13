@@ -7,8 +7,9 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("1_q4qcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1325, 2.91654, 17.3268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.1325, 10.9165, 43.3268)
 collision_layer = 128
+wall_min_slide_angle = 0.785398
 
 [node name="Door" parent="." instance=ExtResource("5_csw1d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.7694, 2.00014, 13.0032)
