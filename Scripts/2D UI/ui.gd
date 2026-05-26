@@ -1,6 +1,10 @@
 extends Control
 class_name UI
 
+signal grab_tip_toggle
+@onready var slots_scene = preload("res://Scenes/2D UI/slot.tscn")
+
+
 var can_grab : bool = false : 
 	set(new):
 		can_grab = new
@@ -9,7 +13,13 @@ var can_grab : bool = false :
 
 func _ready() -> void:
 	Global.connect("slot_changed",Callable(self,"_on_slot_changed"))
-
+	for i in Global.slots:
+		var slot : UISlot = slots_scene.instantiate()
+		slot.name = "Slot%d" % (i+1)
+		if Global.inventory.size() > i:
+			if Global.inventory[i]:
+				slot.set_new_scene(Global.inventory[i])
+		%Inventory.add_child(slot)
 
 
 
@@ -18,58 +28,37 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = !get_tree().paused
 		if get_tree().paused:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			%Crosshair.hide()
 			%PauseMenu.show()
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			%PauseMenu.hide()
-			%Crosshair.show()
 
 func can_grab_tip():
 	if can_grab:
-		var tween = get_tree().create_tween()
-		tween.tween_property(%spr,"scale",Vector2(1,1),0.5)
-		%spr.modulate = Color(0,255,0)
+
 		var event =  InputMap.action_get_events("grab")[0]
-		$Crosshair/Key.text = "[" + event.as_text() + "]"
-		$Crosshair/Key.show()
+		%Key.text = "[" + event.as_text() + "]"
+		%Key.show()
 		
 	else:
-		var tween = get_tree().create_tween()
-		tween.tween_property(%spr,"scale",Vector2(0.5,0.5),0.5)
-		%spr.modulate = Color(1, 1.0, 1.0)
-		$Crosshair/Key.hide()
+		%Key.hide()
 	
 
 
 func _on_slot_changed(which:int):
-	match which:
-		1:
-			if Global.slot1:
-				var instance = Global.slot1.instantiate() as RigidBody3D
-				%icon1.show_icon(instance)
-			else:
-				%icon1.show_icon()
-		2:
-			if Global.slot2:
-				var instance = Global.slot2.instantiate() as RigidBody3D
-				%icon2.show_icon(instance)
-			else:
-				%icon2.show_icon()
-		3:
-			if Global.slot3:
-				var instance = Global.slot3.instantiate()
-				%icon3.show_icon(instance)
-			else:
-				%icon3.show_icon()
+	print_debug(Global.inventory.size(), " ", which)
+	var slot_select = %Inventory.get_child(which-1) as UISlot
+	if Global.inventory.size() >= which and Global.inventory[which-1] != null:
+		slot_select.set_new_scene(Global.inventory[which-1])
+	else:
+		slot_select.set_new_scene(null)
+	
+
+	
+
 func _on_player_slot_selected(slot: Variant) -> void:
-	match slot:
-		1:
-			%SLOT1.get_child(1).play("select")
-		2:
-			%SLOT2.get_child(1).play("select")
-		3:
-			%SLOT3.get_child(1).play("select")
+	var slot_select = %Inventory.get_child(slot-1) as UISlot
+
 
 
 func _on_stamina_component_value_changed(new_value: Variant) -> void:

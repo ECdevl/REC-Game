@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bdy4xmlnp3cx"
+path="res://.godot/imported/telefono_fijo.obj-8bb4f5445f0f6d78e0a70c3e278de2d2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/telefono_fijo.obj-8bb4f5445f0f6d78e0a70c3e278de2d2.mesh"]
+
+source_file="res://Assets/models/recepcion/telefono_fijo.obj"
+dest_files=["res://.godot/imported/telefono_fijo.obj-8bb4f5445f0f6d78e0a70c3e278de2d2.mesh", "res://.godot/imported/telefono_fijo.obj-8bb4f5445f0f6d78e0a70c3e278de2d2.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

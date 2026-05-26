@@ -35,8 +35,7 @@ func _process(delta: float) -> void:
 		"Direccion Teclas Jugador": player.input_dir,
 		"Resistencia": player.get_node("StaminaComponent").stamina,
 		"Podes correr?": player.get_node("StaminaComponent").can_run,
-		"Estas Corriendo?": player.get_node("StaminaComponent").is_run,
-		"Estas Agachado?": player.crouched
+		"Estas Corriendo?": player.get_node("StaminaComponent").is_run
 	}
 
 	if UINode:

@@ -1,19 +1,14 @@
-[gd_scene load_steps=14 format=4 uid="uid://cydrsm1cw5a61"]
+[gd_scene format=4 uid="uid://cydrsm1cw5a61"]
 
-[ext_resource type="Script" uid="uid://dus3bjc76wfsd" path="res://models/LightSwitch/INTERRUPTOR.gd" id="1_rg4x0"]
-[ext_resource type="Texture2D" uid="uid://dcpb681depm5" path="res://models/LightSwitch/SM_light_switch and bulb_embedded_0.png" id="2_m6fnv"]
-[ext_resource type="Texture2D" uid="uid://ddnr6ppdvdylx" path="res://models/LightSwitch/SM_light_switch and bulb_embedded_1.png" id="3_jnp3f"]
-[ext_resource type="Texture2D" uid="uid://ces75s70h52bn" path="res://models/LightSwitch/SM_light_switch and bulb_embedded_2.png" id="4_qletl"]
+[sub_resource type="Resource" id="Resource_cpqjt"]
+metadata/__load_path__ = "res://models/LightSwitch/INTERRUPTOR.gd"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahp7p"]
 resource_name = "Material.001"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_m6fnv")
 emission_enabled = true
-emission_texture = ExtResource("3_jnp3f")
 normal_enabled = true
 normal_scale = 0.0
-normal_texture = ExtResource("4_qletl")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e87lj"]
 _surfaces = [{
@@ -123,10 +118,10 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_rg4x0"]
 size = Vector3(0.121094, 0.338135, 0.363525)
 
-[node name="Area3D" type="Area3D" groups=["interact"]]
+[node name="Area3D" type="Area3D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_rg4x0")
+script = SubResource("Resource_cpqjt")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)

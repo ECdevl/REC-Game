@@ -1,14 +1,31 @@
 class_name Player
 extends CharacterBody3D
 
-var addedHead = false
-signal toggle_run(run:bool)
+# ─────────────────────────────────────────
+#  SEÑALES
+# ─────────────────────────────────────────
+signal toggle_run(run: bool)
+signal slot_selected(slot: int)
 
-@export var LookComponent : LookingatComponent
+# ─────────────────────────────────────────
+#  REFERENCIAS
+# ─────────────────────────────────────────
+@export var _look_component : LookingatComponent
 
-## PLAYER MOVMENT SCRIPT ##
-###########################
-var input_dir
+@onready var _head: Node3D                   = $Head
+@onready var _camera: Camera3D               = $Head/Camera3D
+@onready var _anim_body: AnimationPlayer     = $NPC/AnimationPlayer
+@onready var _anim_player: AnimationPlayer   = $AnimationPlayer
+@onready var _stamina: StaminaComponent                = $StaminaComponent
+@onready var _ui: Control                    = %UI
+@onready var _grab_target: Node3D            = %GrabTarget
+@onready var state_machine: StateMachine     = $StateMachine
+@onready var standing_collision = %stand
+@onready var crouching_collision = %crouch
+
+# ─────────────────────────────────────────
+#  EXPORTS
+# ─────────────────────────────────────────
 @export_category("Mouse Capture")
 @export var CAPTURE_ON_START := true
 
@@ -20,315 +37,289 @@ var input_dir
 @export var IN_AIR_ACCEL := 5.0
 @export var JUMP_VELOCITY := 4.5
 @export var THROW_FORCE := 15.0
-@export_subgroup("Movimineot de Cabeza")
-@export var BOB_FREQ = 2.4
-@export var BOB_AMP = 0.08
-@export var t_bob = 0.0
-@export_subgroup("Limitar rotacion de cabeza")
+
+@export_subgroup("Head Bob")
+@export var BOB_FREQ := 2.4
+@export var BOB_AMP := 0.08
+
+@export_subgroup("Limitar rotación de cabeza")
 @export var CLAMP_HEAD_ROTATION := true
 @export var CLAMP_HEAD_ROTATION_MIN := -90.0
 @export var CLAMP_HEAD_ROTATION_MAX := 90.0
 
-@export_category("Teclas asignadas")
-@export_subgroup("Mouse")
+@export_category("Mouse")
 @export var MOUSE_ACCEL := true
 @export var KEY_BIND_MOUSE_SENS := 0.005
 @export var KEY_BIND_MOUSE_ACCEL := 50
-@export_subgroup("Movimiento")
+
+@export_category("Teclas asignadas")
 @export var KEY_BIND_UP := "forward"
 @export var KEY_BIND_LEFT := "left"
 @export var KEY_BIND_RIGHT := "right"
 @export var KEY_BIND_DOWN := "back"
 @export var KEY_BIND_JUMP := "ui_accept"
 
-var tween : Tween
+@export_category("Stun")
+@export var STUN_DURATION := 2.0
 
+# ─────────────────────────────────────────
+#  VARIABLES
+# ─────────────────────────────────────────
+var input_dir: Vector2 = Vector2.ZERO
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-# To keep track of current speed and acceleration
 var current_speed := SPEED
-var speed := current_speed
-var accel := ACCEL
+var _speed := SPEED
+var _accel := ACCEL
 
-# Used when lerping rotation to reduce stuttering when moving the mouse
-var rotation_target_player : float
-var rotation_target_head : float
+var rotation_target_player: float = 0.0
+var rotation_target_head: float = 0.0
 
-# Used when bobing head
-var head_start_pos : Vector3
+var t_bob: float = 0.0
 
-# Current player tick, used in head bob calculation
-var tick = 0
+var holding: RigidBody3D = null
 
-
-func _ready():
-	
-	tween = get_tree().create_tween()
-		
-	# Capture mouse if set to true
-	if CAPTURE_ON_START:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
-
-
-
-var crouched : bool = false
-
-
-func _process(delta: float) -> void:
-	if holding:
-		holding_logic()
-	
-	if LookComponent.looking_at:
-		if LookComponent.looking_at.is_in_group("interact") or LookComponent.looking_at.is_in_group("grab"):
-			%UI.can_grab = true
-		else:
-			%UI.can_grab = false
-	else:
-		%UI.can_grab = false
-	
-	if Input.is_action_just_pressed("release"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			
-	if Input.is_action_just_pressed("crouch") and !Input.is_action_pressed("run"):
-		$AnimationPlayer.play("crouch")
-		$crouch.disabled = false
-		$stand.disabled = true
-		crouched = true
-		current_speed = SPEED / 2
-	if Input.is_action_just_released("crouch"):
-		$AnimationPlayer.play_backwards("crouch")
-		$AnimationPlayer.queue("standup")
-		$crouch.disabled = true
-		$stand.disabled = false
-		crouched = false
-		current_speed = SPEED
-	#elif $AnimationPlayer.current_animation == "crouched" and !$canStand.is_colliding():
-		#$AnimationPlayer.play_backwards("crouch")
-		#$AnimationPlayer.queue("standup")
-		#crouched = false
-		#current_speed = SPEED
-
-	if !crouched:
-		if Input.is_action_just_pressed("run"):
-			emit_signal("toggle_run",true)
-		if !Input.is_action_pressed("run"):
-			emit_signal("toggle_run",false)
-
-
-func _physics_process(delta):
-	tick += 1
-
-	move_player(delta)
-	rotate_player(delta)
-	
-	t_bob += delta * velocity.length() * float(is_on_floor())
-	$Head.get_child(0).transform.origin = _headbob(t_bob)
-signal slot_selected(slot)
-var current_slot = 1 :
+var current_slot: int = 1:
 	set(new):
 		current_slot = new
 		_equip_item()
-		emit_signal("slot_selected",new)
+		Global.slot_selected(new)  # Emit which slot was selected (1-based index)
+		
 
-func _input(event):
+# ─────────────────────────────────────────
+#  READY
+# ─────────────────────────────────────────
+func _ready() -> void:
+	connect("slot_selected", Callable(self, "_slot_selected"))
+	if CAPTURE_ON_START:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+# ─────────────────────────────────────────
+#  INPUT
+# ─────────────────────────────────────────
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		_set_rotation_target(event.relative)
+
 	if event.is_action_pressed("grab"):
 		_interact()
+
 
 	if event.is_action_pressed("throw"):
 		_throw_object()
 
+	if event.is_action_pressed("release"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	for i in range(1, 4): # Asumiendo slots del 1 al 3
+	for i in range(1, 4):
 		if event.is_action_pressed("slot%d" % i):
 			current_slot = i
-			break # Salir del bucle una vez que se procesa el input
-	# Obtener el movimiento del mouse
-	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		set_rotation_target(event.relative)
+			break
 
+# ─────────────────────────────────────────
+#  PROCESS
+# ─────────────────────────────────────────
+func _process(delta: float) -> void:
+	_update_grab_ui()
 
-func _headbob(time) -> Vector3:
-	var pos = Vector3.ZERO
-	pos.y = sin(time * BOB_FREQ) * BOB_AMP
-	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
-	return pos
+	if holding:
+		_holding_logic()
 
-func set_rotation_target(mouse_motion : Vector2):
-	# Obtener el objetivo de rotacion del eje X e Y
-	rotation_target_player += -mouse_motion.x * KEY_BIND_MOUSE_SENS
-	rotation_target_head += -mouse_motion.y * KEY_BIND_MOUSE_SENS
-	# Clamp rotation
-	if CLAMP_HEAD_ROTATION:
-		rotation_target_head = clamp(rotation_target_head, deg_to_rad(CLAMP_HEAD_ROTATION_MIN), deg_to_rad(CLAMP_HEAD_ROTATION_MAX))
-func rotate_player(delta):
-	$NPC/Cuerpo/Cintura/Torso/Cuello.quaternion = $Head.quaternion
-	if MOUSE_ACCEL:
-		# Shperical lerp between player rotation and target
-		quaternion = quaternion.slerp(Quaternion(Vector3.UP, rotation_target_player), KEY_BIND_MOUSE_ACCEL * delta)
-		# Same again for head
-		$Head.quaternion = $Head.quaternion.slerp(Quaternion(Vector3.RIGHT, rotation_target_head), KEY_BIND_MOUSE_ACCEL * delta)
+func _update_grab_ui() -> void:
+	if _look_component.looking_at == null:
+		_ui.can_grab = false
+	else:
+		_ui.can_grab = true
 		
-	else:
-		# If mouse accel is turned off, simply set to target
-		quaternion = Quaternion(Vector3.UP, rotation_target_player)
-		$Head.quaternion = Quaternion(Vector3.RIGHT, rotation_target_head)
-	
-func move_player(delta):
-	if velocity != Vector3.ZERO:
-		$NPC/AnimationPlayer.play("Caminar")
 
-	else:
-		$NPC/AnimationPlayer.play("RESET")
+# ─────────────────────────────────────────
+#  PHYSICS
+# ─────────────────────────────────────────
+func _physics_process(delta: float) -> void:
+	_move_player(delta)
+	_rotate_player(delta)
 
-	# Check if not on floor
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	_head.get_child(0).transform.origin = _headbob(t_bob)
+
+# ─────────────────────────────────────────
+#  MOVIMIENTO
+# ─────────────────────────────────────────
+func _move_player(delta: float) -> void:
 	if not is_on_floor():
-		# Reduce speed and accel
-		speed = IN_AIR_SPEED
-		accel = IN_AIR_ACCEL
-		# Add the gravity
+		_speed = IN_AIR_SPEED
+		_accel = IN_AIR_ACCEL
 		velocity.y -= gravity * delta
 	else:
-		# Set speed and accel to defualt
-		speed = current_speed
-		accel = ACCEL
+		_speed = current_speed
+		_accel = ACCEL
 
-	# Handle Jump.
 	if Input.is_action_just_pressed(KEY_BIND_JUMP) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
 	input_dir = Input.get_vector(KEY_BIND_LEFT, KEY_BIND_RIGHT, KEY_BIND_UP, KEY_BIND_DOWN)
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	velocity.x = move_toward(velocity.x, direction.x * speed, accel * delta)
-	velocity.z = move_toward(velocity.z, direction.z * speed, accel * delta)
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	velocity.x = move_toward(velocity.x, direction.x * _speed, _accel * delta)
+	velocity.z = move_toward(velocity.z, direction.z * _speed, _accel * delta)
 
 	move_and_slide()
 
-var holding : RigidBody3D = null 
-func _interact() -> void:
-	# Usar get_node() con la constante para obtener el nodo de forma segura.
-	if LookComponent.looking_at and LookComponent.looking_at.is_in_group("grab"):
-		if null in [Global.slot1,Global.slot2,Global.slot3]:
-			if holding:
-				_drop_object()
-				holding = LookComponent.looking_at as RigidBody3D # Aseguramos el tipo
-				Global.store_item(holding) # Guardar el objeto en el inventario
-				_equip_item()
-				return
-			else:
-				holding = LookComponent.looking_at as RigidBody3D # Aseguramos el tipo
-				Global.store_item(holding) # Guardar el objeto en el inventario
+func _rotate_player(delta: float) -> void:
+	$NPC/Cuerpo/Cintura/Torso/Cuello.quaternion = _head.quaternion
 
-			return
-	elif LookComponent.looking_at and LookComponent.looking_at.is_in_group("interact"):
-		LookComponent.looking_at.interac()
+	if MOUSE_ACCEL:
+		quaternion = quaternion.slerp(
+			Quaternion(Vector3.UP, rotation_target_player),
+			KEY_BIND_MOUSE_ACCEL * delta
+		)
+
+		_head.quaternion = _head.quaternion.slerp(
+			Quaternion(Vector3.RIGHT, rotation_target_head),
+			KEY_BIND_MOUSE_ACCEL * delta
+		)
+	else:
+		quaternion = Quaternion(Vector3.UP, rotation_target_player)
+		_head.quaternion = Quaternion(Vector3.RIGHT, rotation_target_head)
+
+func _set_rotation_target(mouse_motion: Vector2) -> void:
+	rotation_target_player += -mouse_motion.x * KEY_BIND_MOUSE_SENS
+	rotation_target_head += -mouse_motion.y * KEY_BIND_MOUSE_SENS
+
+	if CLAMP_HEAD_ROTATION:
+		rotation_target_head = clamp(
+			rotation_target_head,
+			deg_to_rad(CLAMP_HEAD_ROTATION_MIN),
+			deg_to_rad(CLAMP_HEAD_ROTATION_MAX)
+		)
+
+func _headbob(time: float) -> Vector3:
+	var pos := Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ / 2.0) * BOB_AMP
+	return pos
+
+# ─────────────────────────────────────────
+#  STUN API
+# ─────────────────────────────────────────
+#func stun() -> void:
+#	state_machine._transition_to_next_state("StunnedState")
+
+# ─────────────────────────────────────────
+#  INVENTARIO / INTERACCION
+# ─────────────────────────────────────────
+# TODO: dejar acá todo lo de interactuar,
+# equipar items, agarrar objetos, tirar objetos,
+# UI de grab, etc...
+
+func _interact() -> void:
+	if _look_component.looking_at == null:
 		return
 
+	var target := _look_component.looking_at
+
+	if target is GrabObject:
+		
+		# El inventario tiene espacio
+		if Global.inventory.size() < Global.slots:
+			print_debug("intente agarrarlo")
+			if holding:
+				_drop_object()
+			holding = target as RigidBody3D
+			Global.store_item(holding)
+			_equip_item()
+		return
+
+	if target.is_in_group("interact") or target is DoorComponent:
+		target.interact(self)
+
+
 func _equip_item() -> void:
-	# Si ya hay un objeto en la mano y cambiamos de slot, lo soltamos primero
+	
 	if holding:
-		holding.queue_free() # Liberar el objeto actual si hay uno
+		holding.queue_free()
 		holding = null
 
-	var item_packed_scene = null
-
-	# Usar un `match` para obtener la PackedScene del slot correspondiente
-	match current_slot:
-		1: item_packed_scene = Global.slot1
-		2: item_packed_scene = Global.slot2
-		3: item_packed_scene = Global.slot3
-		_:
-			return
-
-	if item_packed_scene:
-		# Instanciar y añadir el objeto a la escena
-		var new_object = item_packed_scene.instantiate()
-		get_tree().current_scene.add_child(new_object)
-		holding = new_object as RigidBody3D 
-		if !holding:
-			if holding:
-				holding.queue_free()
-			holding = null
-
-
-func holding_logic() -> void:
-	holding.linear_velocity = Vector3.ZERO
-	holding.angular_velocity = Vector3.ZERO
+	var item_scene: PackedScene = null
+	if Global.inventory.size() >= current_slot:
+		item_scene = Global.inventory[current_slot-1]  # current_slot is 1-based index
+	emit_signal("slot_selected", current_slot)
+	if item_scene == null:
+		return
 	
-	var target_transform: Transform3D = %GrabTarget.global_transform
+	var new_obj := item_scene.instantiate()
+	get_tree().current_scene.add_child(new_obj)
 
-	var held_object_transform: Transform3D = Transform3D()
+	if not new_obj is RigidBody3D:
+		new_obj.queue_free()
+		return
+
+	holding = new_obj as RigidBody3D
+	
+
+
+func _holding_logic() -> void:
+	holding.linear_velocity  = Vector3.ZERO
+	holding.angular_velocity = Vector3.ZERO
+
+	var target_transform := _grab_target.global_transform
+	var held_transform   := Transform3D()
 
 	if "held_rotation" in holding and "held_offset" in holding:
-		var held_rot_euler = holding.held_rotation # Rotación en grados Euler
-		var held_offset_vec = holding.held_offset   # Vector de offset
+		var rot_euler: Vector3 = holding.held_rotation
+		var offset:    Vector3 = holding.held_offset
 
-		# Convertir la rotación Euler del objeto a una Basis.
-		# Esta Basis representa la rotación local deseada para el objeto.
-		var local_rotation_basis = Basis()
-		local_rotation_basis = local_rotation_basis.rotated(Vector3(1, 0, 0), deg_to_rad(held_rot_euler.x))
-		local_rotation_basis = local_rotation_basis.rotated(Vector3(0, 1, 0), deg_to_rad(held_rot_euler.y))
-		local_rotation_basis = local_rotation_basis.rotated(Vector3(0, 0, 1), deg_to_rad(held_rot_euler.z))
+		var local_basis := Basis()
+		local_basis = local_basis.rotated(Vector3(1, 0, 0), deg_to_rad(rot_euler.x))
+		local_basis = local_basis.rotated(Vector3(0, 1, 0), deg_to_rad(rot_euler.y))
+		local_basis = local_basis.rotated(Vector3(0, 0, 1), deg_to_rad(rot_euler.z))
 
-		# Construir la transformación local deseada del objeto:
-		# Primero la rotación, luego la traslación (offset).
-		held_object_transform = Transform3D(local_rotation_basis, held_offset_vec)
+		held_transform = Transform3D(local_basis, offset)
 
-	# 4. Combinar la transformación del GrabTarget con la transformación local del objeto.
-	# Esto coloca el objeto en la posición y orientación del GrabTarget,
-	# y luego aplica su offset y rotación *relativos* a ese punto.
-	holding.global_transform = target_transform * held_object_transform
+	holding.global_transform = target_transform * held_transform
 	holding.set_collision_layer_value(1, false)
 	holding.set_collision_mask_value(1, false)
 	holding.remove_from_group("grab")
 
+
 func _throw_object() -> void:
-	if holding:
-		# Calcular la dirección desde la posición del objeto a la posición del punto de lanzamiento.
-		# Esto asegura que el lanzamiento vaya en la dirección de la cámara.
-		var direction_to_throw = $Head/Camera3D.global_transform.basis.z
-		# Aplicar una fuerza impulsiva para un lanzamiento más físico.
-		if holding is RigidBody3D:
-			holding.apply_central_impulse(-direction_to_throw * THROW_FORCE) # Impulso en la dirección opuesta
+	if holding == null:
+		return
 
-			# Restaurar capas de colisión y máscara después del lanzamiento.
-			holding.set_collision_layer_value(1, true)
-			holding.set_collision_mask_value(1, true)
-			holding.add_to_group("grab")
+	# basis.z apunta hacia atrás de la cámara; negarlo = adelante
+	var throw_dir: Vector3 = -_camera.global_transform.basis.z
+	holding.apply_central_impulse(throw_dir * THROW_FORCE)
+	holding.set_collision_layer_value(1, true)
+	holding.set_collision_mask_value(1, true)
+	holding.add_to_group("grab")
 
-		_clear_inventory_slot(current_slot)
-		holding = null
+	_clear_inventory_slot(current_slot)
+	holding = null
+
 
 func _drop_object() -> void:
-	if holding:
-		# Restaurar capas de colisión y máscara
-		if holding is RigidBody3D:
-			# Es crucial asegurarse de que las capas que restauras sean las correctas para el objeto.
-			holding.set_collision_layer_value(1, true)
-			holding.set_collision_mask_value(1, true)
-			holding.add_to_group("grab")
-		# Eliminar la referencia del slot del inventario.
-		# Considera una función en Global para manejar esto de manera más abstracta.
-		_clear_inventory_slot(current_slot)
-		
-		holding = null # Limpiar la referencia al objeto
+	if holding == null:
+		return
+
+	holding.set_collision_layer_value(1, true)
+	holding.set_collision_mask_value(1, true)
+	holding.add_to_group("interactable")
+
+	_clear_inventory_slot(current_slot)
+	holding = null
+
 
 func _clear_inventory_slot(slot_index: int) -> void:
-	# Función auxiliar para limpiar el slot del inventario
-	match slot_index:
-		1: Global.slot1 = null
-		2: Global.slot2 = null
-		3: Global.slot3 = null
+	Global.drop_item(slot_index)
 
 
-func _on_stamina_component_running(runing: Variant, speed: Variant) -> void:
+# ─────────────────────────────────────────
+#  SEÑALES RECIBIDAS
+# ─────────────────────────────────────────
+func _on_stamina_component_running(runing: bool, speed: float) -> void:
 	if runing:
 		current_speed = SPEED + speed
 	else:

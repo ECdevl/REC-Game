@@ -1,32 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://be5bgyovehso1"]
+[gd_scene format=3 uid="uid://cgm5aljhwy7kr"]
 
 [ext_resource type="PackedScene" uid="uid://b4qigixi24qcn" path="res://Scenes/CharacterBody3D/player.tscn" id="1_q4qcp"]
 [ext_resource type="PackedScene" uid="uid://cwm6iugbfbwut" path="res://Assets/models/Recepcion_beta.glb" id="3_fhuq3"]
+[ext_resource type="Script" uid="uid://dbqj7di66j5l6" path="res://Scripts/Components/door_component.gd" id="3_ngrh0"]
 [ext_resource type="PackedScene" uid="uid://b12q5uyv8nw7d" path="res://Scenes/Generico/puerta.tscn" id="5_csw1d"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4qcp"]
+size = Vector3(2.5795898, 4.10376, 1)
 
-[node name="player" parent="." instance=ExtResource("1_q4qcp")]
+[node name="Node3D" type="Node3D" unique_id=1905340481]
+
+[node name="player" parent="." unique_id=57291460 instance=ExtResource("1_q4qcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.1325, 10.9165, 43.3268)
 collision_layer = 128
 wall_min_slide_angle = 0.785398
 
-[node name="Door" parent="." instance=ExtResource("5_csw1d")]
+[node name="Door" parent="." unique_id=1764135028 instance=ExtResource("5_csw1d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.7694, 2.00014, 13.0032)
 
-[node name="Recepcion_beta" parent="." instance=ExtResource("3_fhuq3")]
+[node name="DoorComponent" type="Area3D" parent="Door" unique_id=2117148015]
+script = ExtResource("3_ngrh0")
+rot_amount = -90.0
+metadata/_custom_type_script = "uid://dbqj7di66j5l6"
 
-[node name="oco" type="SpotLight3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorComponent" unique_id=1175737000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7897949, 0.0657959, 0)
+shape = SubResource("BoxShape3D_q4qcp")
+
+[node name="Recepcion_beta" parent="." unique_id=240455442 instance=ExtResource("3_fhuq3")]
+
+[node name="oco" type="SpotLight3D" parent="." unique_id=295095586]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.5062, 5.95941, 14.4784)
 light_energy = 10.0
 spot_range = 10.0
 
-[node name="oco2" type="SpotLight3D" parent="."]
+[node name="oco2" type="SpotLight3D" parent="." unique_id=1587623048]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.4905, 5.95941, 19.987)
 light_energy = 10.0
 spot_range = 10.0
 
-[node name="oco3" type="SpotLight3D" parent="."]
+[node name="oco3" type="SpotLight3D" parent="." unique_id=1243264383]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 33.0581, 5.95941, 52.1123)
 light_energy = 10.0
 spot_range = 10.0

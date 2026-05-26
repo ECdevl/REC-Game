@@ -1,305 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://q8lugtgftalv"]
+[gd_scene format=3 uid="uid://q8lugtgftalv"]
 
 [ext_resource type="Script" uid="uid://cnd6m3ov62xwf" path="res://Scripts/2D UI/ui.gd" id="1_b3bc3"]
-[ext_resource type="Texture2D" uid="uid://cvgiinw4dnydt" path="res://Resources/Crosshair.tres" id="2_3b2b5"]
 [ext_resource type="Script" uid="uid://dyi23gvainyl0" path="res://Scripts/2D UI/node.gd" id="3_k4hdh"]
-[ext_resource type="PackedScene" uid="uid://bs4d6x1gxgyk0" path="res://Scenes/icon_shower.tscn" id="4_0nu4f"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b2b5"]
-bg_color = Color(0.6, 0.6, 0.6, 0.113725)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.629675, 0.629675, 0.629674, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Animation" id="Animation_g6l6n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%SLOT1:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%SLOT2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%SLOT3:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_3b2b5"]
-resource_name = "select"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%SLOT1:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%SLOT2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%SLOT3:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qui0h"]
-_data = {
-&"RESET": SubResource("Animation_g6l6n"),
-&"select": SubResource("Animation_3b2b5")
-}
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6l6n"]
-bg_color = Color(0.6, 0.6, 0.6, 0.113725)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.629675, 0.629675, 0.629674, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Animation" id="Animation_0mc3e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%SLOT2:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%SLOT1:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%SLOT3:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_vrfts"]
-resource_name = "select"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%SLOT2:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%SLOT1:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%SLOT3:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2n5f6"]
-_data = {
-&"RESET": SubResource("Animation_0mc3e"),
-&"select": SubResource("Animation_vrfts")
-}
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qui0h"]
-bg_color = Color(0.6, 0.6, 0.6, 0.113725)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.629675, 0.629675, 0.629674, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Animation" id="Animation_i1vam"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%SLOT3:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%SLOT2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%SLOT1:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_27c8x"]
-resource_name = "select"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%SLOT3:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%SLOT2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%SLOT1:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q77pa"]
-_data = {
-&"RESET": SubResource("Animation_i1vam"),
-&"select": SubResource("Animation_27c8x")
-}
 
 [sub_resource type="LabelSettings" id="LabelSettings_wusub"]
 font_size = 32
 
-[node name="UI" type="Control"]
+[node name="UI" type="Control" unique_id=1500673210]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -309,10 +16,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b3bc3")
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="." unique_id=895657778]
 script = ExtResource("3_k4hdh")
 
-[node name="Crosshair" type="Control" parent="."]
+[node name="Crosshair" type="Control" parent="." unique_id=152051194]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -325,12 +32,12 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="spr" type="Sprite2D" parent="Crosshair"]
+[node name="spr" type="Sprite2D" parent="Crosshair" unique_id=1864189935]
 unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_3b2b5")
 
-[node name="Key" type="Label" parent="Crosshair"]
+[node name="Key" type="Label" parent="Crosshair" unique_id=145329094]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -348,7 +55,7 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Crosshair/Key"]
+[node name="Label" type="Label" parent="Crosshair/Key" unique_id=330547806]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -363,96 +70,17 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Interactuar/Recoger"
 
-[node name="Inventory" type="Control" parent="."]
-layout_mode = 2
-anchors_preset = 0
+[node name="Inventory" type="HBoxContainer" parent="." unique_id=1966482423]
+unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.21875
 anchor_top = 0.75463
 anchor_right = 0.78125
 anchor_bottom = 0.966049
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="SLOT1" type="Panel" parent="Inventory"]
-unique_name_in_owner = true
-layout_mode = 0
-anchor_left = 0.257716
-anchor_top = 0.11679
-anchor_right = 0.412037
-anchor_bottom = 0.846717
-pivot_offset = Vector2(50, 50)
-theme_override_styles/panel = SubResource("StyleBoxFlat_3b2b5")
-metadata/_edit_use_anchors_ = true
-
-[node name="icon1" parent="Inventory/SLOT1" instance=ExtResource("4_0nu4f")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="APSLOT1" type="AnimationPlayer" parent="Inventory/SLOT1"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_qui0h")
-}
-
-[node name="SLOT2" type="Panel" parent="Inventory"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.41358
-anchor_top = 0.11679
-anchor_right = 0.567901
-anchor_bottom = 0.846717
-offset_right = -3.05176e-05
-pivot_offset = Vector2(50, 50)
-theme_override_styles/panel = SubResource("StyleBoxFlat_g6l6n")
-metadata/_edit_use_anchors_ = true
-
-[node name="icon2" parent="Inventory/SLOT2" instance=ExtResource("4_0nu4f")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="APSLOT2" type="AnimationPlayer" parent="Inventory/SLOT2"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_2n5f6")
-}
-
-[node name="SLOT3" type="Panel" parent="Inventory"]
-unique_name_in_owner = true
-layout_mode = 0
-anchor_left = 0.569444
-anchor_top = 0.11679
-anchor_right = 0.723765
-anchor_bottom = 0.846717
-pivot_offset = Vector2(50, 50)
-theme_override_styles/panel = SubResource("StyleBoxFlat_qui0h")
-metadata/_edit_use_anchors_ = true
-
-[node name="icon3" parent="Inventory/SLOT3" instance=ExtResource("4_0nu4f")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="APSLOT3" type="AnimationPlayer" parent="Inventory/SLOT3"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_q77pa")
-}
-
-[node name="PauseMenu" type="Panel" parent="."]
+[node name="PauseMenu" type="Panel" parent="." unique_id=1725254563]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -462,7 +90,7 @@ offset_right = 725.5
 offset_bottom = 489.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="PauseMenu"]
+[node name="Label" type="Label" parent="PauseMenu" unique_id=1369995199]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.996656
@@ -478,7 +106,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="StaminaBar" type="ProgressBar" parent="."]
+[node name="StaminaBar" type="ProgressBar" parent="." unique_id=1299150651]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12

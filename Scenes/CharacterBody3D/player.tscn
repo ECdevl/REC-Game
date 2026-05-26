@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://b4qigixi24qcn"]
+[gd_scene format=4 uid="uid://b4qigixi24qcn"]
 
 [ext_resource type="Script" uid="uid://upcfpll814mi" path="res://Scripts/Player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://q8lugtgftalv" path="res://Scenes/2D UI/UI.tscn" id="3_hqtel"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://ukan2an3vclq" path="res://Scenes/Components/hitbox_component.tscn" id="5_pmbg2"]
 [ext_resource type="Script" uid="uid://b21cvt3783i84" path="res://Scripts/Components/lookingat_component.gd" id="6_pmbg2"]
 [ext_resource type="Script" uid="uid://n8i2whnhoqaa" path="res://Scripts/Components/stamina_component.gd" id="6_uk65g"]
+[ext_resource type="Script" uid="uid://bdu658g665nyl" path="res://Scripts/Player/state_machine/state_machine.gd" id="7_pmpuf"]
+[ext_resource type="Script" uid="uid://o2tjlv8q5utw" path="res://Scripts/Player/state_machine/idle.gd" id="8_ktsn8"]
+[ext_resource type="Script" uid="uid://fkg2qfigu2ni" path="res://Scripts/Player/state_machine/run.gd" id="9_w1bnu"]
+[ext_resource type="Script" uid="uid://ca60xtapc43gc" path="res://Scripts/Player/state_machine/walk.gd" id="10_uglw3"]
+[ext_resource type="Script" uid="uid://3j1dla2f045j" path="res://Scripts/Player/state_machine/crouch.gd" id="11_10gs5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sweqy"]
 radius = 0.338831
@@ -923,252 +928,271 @@ size = Vector3(1, 1.91687, 0.444336)
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_pmbg2"]
 length = 0.8
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("LookComponent") groups=["player"]]
+[node name="player" type="CharacterBody3D" unique_id=217643924 node_paths=PackedStringArray("_look_component") groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_onrkg")
-LookComponent = NodePath("Head/Camera3D/LookingatComponent")
+_look_component = NodePath("Head/Camera3D/LookingatComponent")
 
-[node name="stand" type="CollisionShape3D" parent="."]
+[node name="stand" type="CollisionShape3D" parent="." unique_id=527528193]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16274, 0)
 shape = SubResource("CapsuleShape3D_sweqy")
 
-[node name="crouch" type="CollisionShape3D" parent="."]
+[node name="crouch" type="CollisionShape3D" parent="." unique_id=1188041122]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03705, 0)
 shape = SubResource("CapsuleShape3D_i3pqv")
 disabled = true
 
-[node name="Head" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="." unique_id=1172153747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.328, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1647042167]
 cull_mask = 523775
 
-[node name="LookingatComponent" type="RayCast3D" parent="Head/Camera3D"]
+[node name="LookingatComponent" type="RayCast3D" parent="Head/Camera3D" unique_id=1125057414]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -5)
 collision_mask = 255
+collide_with_areas = true
 script = ExtResource("6_pmbg2")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D" unique_id=182893826]
 spot_range = 15.0
 spot_angle = 41.4814
 
-[node name="NPC" type="Node3D" parent="."]
+[node name="NPC" type="Node3D" parent="." unique_id=159422919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.89693, 0.190954)
 
-[node name="Cuerpo" type="Node3D" parent="NPC"]
+[node name="Cuerpo" type="Node3D" parent="NPC" unique_id=1142977305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
-[node name="Cintura" type="Node3D" parent="NPC/Cuerpo"]
+[node name="Cintura" type="Node3D" parent="NPC/Cuerpo" unique_id=451092774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.0015625)
 
-[node name="Cadera" type="Node3D" parent="NPC/Cuerpo/Cintura"]
+[node name="Cadera" type="Node3D" parent="NPC/Cuerpo/Cintura" unique_id=417737024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.224574, 0.0118438)
 
-[node name="Muslo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera"]
+[node name="Muslo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera" unique_id=222067309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184375, -0.369176, -0.00403125)
 
-[node name="Gemelo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1"]
+[node name="Gemelo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1" unique_id=1579835678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00104187, -0.708333, -0.00729187)
 
-[node name="Pie1" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1/Gemelo1"]
+[node name="Pie1" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1/Gemelo1" unique_id=2042786341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00208313, -0.579167, -0.0479162)
 
-[node name="cube_18" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1/Gemelo1/Pie1"]
+[node name="cube_18" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1/Gemelo1/Pie1" unique_id=1828748353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11875, 0.0458331)
 layers = 512
 mesh = SubResource("ArrayMesh_i15c3")
 skeleton = NodePath("")
 
-[node name="cube_13" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1/Gemelo1"]
+[node name="cube_13" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1/Gemelo1" unique_id=954061483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185417, -2.38542, -0.00208313)
 layers = 512
 mesh = SubResource("ArrayMesh_1g1h0")
 skeleton = NodePath("")
 
-[node name="cube_15" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1"]
+[node name="cube_15" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo1" unique_id=1609755342]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184375, -2.40625, -0.009375)
 layers = 512
 mesh = SubResource("ArrayMesh_xqdhu")
 skeleton = NodePath("")
 
-[node name="Muslo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera"]
+[node name="Muslo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera" unique_id=1417545257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184375, -0.369176, -0.00403125)
 
-[node name="Gemelo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2"]
+[node name="Gemelo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2" unique_id=1241256231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00104187, -0.708333, -0.00729187)
 
-[node name="Pie2" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2/Gemelo2"]
+[node name="Pie2" type="Node3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2/Gemelo2" unique_id=852787778]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00208313, -0.579167, -0.0479162)
 
-[node name="cube_19" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2/Gemelo2/Pie2"]
+[node name="cube_19" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2/Gemelo2/Pie2" unique_id=1064853492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11875, 0.0458331)
 layers = 512
 mesh = SubResource("ArrayMesh_7crnb")
 skeleton = NodePath("")
 
-[node name="cube_14" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2/Gemelo2"]
+[node name="cube_14" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2/Gemelo2" unique_id=1868767563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185417, -2.38542, -0.00208313)
 layers = 512
 mesh = SubResource("ArrayMesh_yphnb")
 skeleton = NodePath("")
 
-[node name="cube_16" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2"]
+[node name="cube_16" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera/Muslo2" unique_id=1844416919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184375, -2.40625, -0.009375)
 layers = 512
 mesh = SubResource("ArrayMesh_6yofp")
 skeleton = NodePath("")
 
-[node name="cube_1" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera"]
+[node name="cube_1" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Cadera" unique_id=334479004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.77543, -0.0134062)
 layers = 512
 mesh = SubResource("ArrayMesh_vkfkq")
 skeleton = NodePath("")
 
-[node name="Torso" type="Node3D" parent="NPC/Cuerpo/Cintura"]
+[node name="Torso" type="Node3D" parent="NPC/Cuerpo/Cintura" unique_id=82171521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28125, 0.0015625)
 
-[node name="Cuello" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso"]
+[node name="Cuello" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso" unique_id=422156595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530921, 0.03414)
 
-[node name="Cabeza" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Cuello"]
+[node name="Cabeza" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Cuello" unique_id=2013125434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354929, -0.037265)
 
-[node name="cube_20" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Cuello/Cabeza"]
+[node name="cube_20" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Cuello/Cabeza" unique_id=2124437602]
 layers = 512
 mesh = SubResource("ArrayMesh_fquce")
 skeleton = NodePath("")
 
-[node name="cube_17" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Cuello"]
+[node name="cube_17" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Cuello" unique_id=793170443]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0.00032875, 0.006485)
 layers = 512
 mesh = SubResource("ArrayMesh_vu1ei")
 skeleton = NodePath("")
 
-[node name="Brazo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso"]
+[node name="Brazo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso" unique_id=2131066940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0.461408, 0.00625)
 
-[node name="Antebrazo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1"]
+[node name="Antebrazo1" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1" unique_id=157353636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, -0.680157, 0)
 
-[node name="Mano1" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1"]
+[node name="Mano1" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1" unique_id=255206853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0002475, -0.600638, -0.0042175)
 
-[node name="cube_7" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1/Mano1"]
+[node name="cube_7" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1/Mano1" unique_id=1260691352]
 transform = Transform3D(0.999048, 0.0436194, 0, -0.0436194, 0.999048, 0, 0, 0, 1, -0.0060025, -0.0743619, 0.0010925)
 layers = 512
 mesh = SubResource("ArrayMesh_t53ir")
 skeleton = NodePath("")
 
-[node name="cube_8" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1/Mano1"]
+[node name="cube_8" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1/Mano1" unique_id=1162766292]
 transform = Transform3D(0.793353, -0.608761, 0, 0.608761, 0.793353, 0, 0, 0, 1, 0.0252475, -0.149362, 0.0010925)
 layers = 512
 mesh = SubResource("ArrayMesh_0hhg2")
 skeleton = NodePath("")
 
-[node name="cube_9" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1/Mano1"]
+[node name="cube_9" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1/Mano1" unique_id=1760757365]
 transform = Transform3D(0.941088, -0.334105, 0.0522171, 0.334105, 0.894805, -0.296137, 0.052217, 0.296137, 0.953717, 0.0033725, -0.0806119, -0.102032)
 layers = 512
 mesh = SubResource("ArrayMesh_dup1c")
 skeleton = NodePath("")
 
-[node name="cube_5" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1"]
+[node name="cube_5" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1/Antebrazo1" unique_id=1876257486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -2.625, -0.009375)
 layers = 512
 mesh = SubResource("ArrayMesh_q3ndn")
 skeleton = NodePath("")
 
-[node name="cube_3" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1"]
+[node name="cube_3" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo1" unique_id=675634792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -2.61766, -0.009375)
 layers = 512
 mesh = SubResource("ArrayMesh_ok0hx")
 skeleton = NodePath("")
 
-[node name="Brazo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso"]
+[node name="Brazo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso" unique_id=1842987466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0.461408, 0.00625)
 
-[node name="Antebrazo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2"]
+[node name="Antebrazo2" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2" unique_id=481320667]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -0.680157, 0)
 
-[node name="Mano2" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2"]
+[node name="Mano2" type="Node3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2" unique_id=244493363]
 transform = Transform3D(-1, 0, -1.22461e-16, 0, 1, 0, 1.22461e-16, 0, -1, -0.00482125, -0.600273, -0.00625437)
 
-[node name="cube_10" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2/Mano2"]
+[node name="cube_10" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2/Mano2" unique_id=394777050]
 transform = Transform3D(0.793353, -0.608761, 0, 0.608761, 0.793353, 0, 0, 0, 1, 0.0206731, -0.149727, -0.000943125)
 layers = 512
 mesh = SubResource("ArrayMesh_jc7i3")
 skeleton = NodePath("")
 
-[node name="cube_11" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2/Mano2"]
+[node name="cube_11" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2/Mano2" unique_id=1727129133]
 transform = Transform3D(-0.941088, -0.309838, 0.135475, -0.334105, 0.913786, -0.231019, -0.052217, -0.262672, -0.963471, -0.00745188, -0.0872269, 0.102182)
 layers = 512
 mesh = SubResource("ArrayMesh_klf7m")
 skeleton = NodePath("")
 
-[node name="cube_12" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2/Mano2"]
+[node name="cube_12" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2/Mano2" unique_id=1010675341]
 transform = Transform3D(0.999048, 0.0436194, 0, -0.0436194, 0.999048, 0, 0, 0, 1, -0.0105769, -0.0747269, -0.000943125)
 layers = 512
 mesh = SubResource("ArrayMesh_mlw35")
 skeleton = NodePath("")
 
-[node name="cube_6" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2"]
+[node name="cube_6" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2/Antebrazo2" unique_id=1858348523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -2.625, -0.009375)
 layers = 512
 mesh = SubResource("ArrayMesh_2glbm")
 skeleton = NodePath("")
 
-[node name="cube_4" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2"]
+[node name="cube_4" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso/Brazo2" unique_id=2018941779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, -2.61766, -0.009375)
 layers = 512
 mesh = SubResource("ArrayMesh_06ncv")
 skeleton = NodePath("")
 
-[node name="cube_2" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso"]
+[node name="cube_2" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura/Torso" unique_id=555245179]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.09375, -0.003125)
 layers = 512
 mesh = SubResource("ArrayMesh_wofig")
 skeleton = NodePath("")
 
-[node name="cube" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura"]
+[node name="cube" type="MeshInstance3D" parent="NPC/Cuerpo/Cintura" unique_id=986605575]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, -0.0015625)
 layers = 512
 mesh = SubResource("ArrayMesh_pxecv")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
-libraries = {
-&"": SubResource("AnimationLibrary_wj8it")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC" unique_id=1343020928]
+libraries/ = SubResource("AnimationLibrary_wj8it")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_sweqy")
-}
-autoplay = "standup"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=64282847]
+libraries/ = SubResource("AnimationLibrary_sweqy")
+autoplay = &"standup"
 
-[node name="UI" parent="." instance=ExtResource("3_hqtel")]
+[node name="UI" parent="." unique_id=254617725 instance=ExtResource("3_hqtel")]
 unique_name_in_owner = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_fhl60")]
+[node name="HealthComponent" parent="." unique_id=1885185365 instance=ExtResource("4_fhl60")]
 
-[node name="StaminaComponent" type="Node3D" parent="."]
+[node name="StaminaComponent" type="Node3D" parent="." unique_id=2091298796]
 script = ExtResource("6_uk65g")
 stamina_degrade = 20.0
 extra_speed = 5.0
 
-[node name="HitboxComponent" parent="." instance=ExtResource("5_pmbg2")]
+[node name="HitboxComponent" parent="." unique_id=11812073 instance=ExtResource("5_pmbg2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=886346000]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.935608, 0.210449)
 shape = SubResource("BoxShape3D_fhl60")
 
-[node name="GrabTarget" type="Node3D" parent="."]
+[node name="GrabTarget" type="Node3D" parent="." unique_id=1264337486]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475, 0, -0.774154)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1236598836]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1, -0.605268)
 shape = SubResource("SeparationRayShape3D_pmbg2")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1382835106]
+script = ExtResource("7_pmpuf")
+metadata/_custom_type_script = "uid://bdu658g665nyl"
+
+[node name="idle" type="Node" parent="StateMachine" unique_id=840937963]
+script = ExtResource("8_ktsn8")
+metadata/_custom_type_script = "uid://do24556247x0c"
+
+[node name="run" type="Node" parent="StateMachine" unique_id=1209669565]
+script = ExtResource("9_w1bnu")
+metadata/_custom_type_script = "uid://do24556247x0c"
+
+[node name="walk" type="Node" parent="StateMachine" unique_id=1194936788]
+script = ExtResource("10_uglw3")
+metadata/_custom_type_script = "uid://do24556247x0c"
+
+[node name="crouch" type="Node" parent="StateMachine" unique_id=1580341641]
+script = ExtResource("11_10gs5")
+metadata/_custom_type_script = "uid://do24556247x0c"
 
 [connection signal="slot_selected" from="." to="UI" method="_on_player_slot_selected"]
 [connection signal="toggle_run" from="." to="StaminaComponent" method="_on_player_toggle_run"]
